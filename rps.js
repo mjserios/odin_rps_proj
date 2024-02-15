@@ -61,8 +61,28 @@ function playRound (playerSelection, computerSelection){
         }
 }
 
-const playerSelection = "rock";
-let computerSelection = getComputerChoice();
+function playGame(){
+    for (let i = 0; i < 100; i++) {
+        const playerSelection = prompt("What is your choice?").toLowerCase();
+        let computerSelection = getComputerChoice();
+        playRound(playerSelection, computerSelection);
+        if (win == 5){
+            console.log("Congratulations you won the series!");
+            break
+        }
+        else if (lose == 5) {
+            console.log("Get noob");
+            break
+        }
+    }
+}
+
+
+
 let win = 0;
 let lose = 0;
+
+playGame()
+
+
 
