@@ -82,7 +82,7 @@ function playGame(){
 let win = 0;
 let lose = 0;
 
-playGame()
+
 
 
 
