@@ -1,3 +1,10 @@
+const rockChoice = document.querySelector(".rock");
+const paperChoice = document.querySelector(".paper");
+const scissorChoice = document.querySelector(".scissors");
+const displayMsg = document.querySelector(".battleArea p");
+let downwards = document.querySelector(".battleArea img");
+
+
 function getComputerChoice (){
     rng = Math.floor(Math.random() * 3) + 1; // Generate random number from 1-3
     switch (rng){
@@ -13,50 +20,155 @@ function getComputerChoice (){
     }  
 }
 
-function playRound (playerSelection, computerSelection){
-    console.log("Rock, Paper, Scissors, Shoot!");
+function playRound (playerSelection, computerSelection){ 
+let emojiSpan = document.createElement('span');  
+let spanUpdate = document.querySelector("span");
     switch (playerSelection){
         case "rock":
             switch (computerSelection){
                 case "scissors":
-                    console.log("You win! Rock > Scissors!");
+                    displayMsg.textContent = "You win! Rock > Scissors!";
+                    if (downwards) {
+                        emojiSpan.textContent = "✌️";
+                        downwards.parentNode.appendChild(emojiSpan);
+                        downwards.remove();
+                        downwards = null;
+                    }
+                    else {
+                        emojiSpan.textContent = "✌️";
+                        spanUpdate.appendChild(emojiSpan);
+                    }
                     win += 1
-                    return 
+                    break 
                 case "rock":
-                    console.log("It's a draw!");
-                    return
+                    displayMsg.textContent = "It's a draw!";
+                    if (downwards) {
+
+                        emojiSpan.textContent = "👊";
+                        downwards.parentNode.appendChild(emojiSpan);
+                        downwards.remove();
+                        downwards = null;
+                    }
+                    else {
+
+                        emojiSpan.textContent = "👊";
+                        spanUpdate.appendChild(emojiSpan);
+                    }
+                    break
                 case "paper":
-                    console.log("You lose! Rock < Paper! :(");
+                    displayMsg.textContent = "You lose! Rock < Paper! :(";
+                    if (downwards) {
+
+                        emojiSpan.textContent = "✋";
+                        downwards.parentNode.appendChild(emojiSpan);
+                        downwards.remove();
+                        downwards = null;
+                    }
+                    else {
+
+                        emojiSpan.textContent = "✋";
+                        spanUpdate.appendChild(emojiSpan);
+                    }
                     lose += 1
-                    return 
+                    break
             }
         case "paper":
             switch (computerSelection){
                 case "rock":
-                    console.log("You win! Paper > Rock!");
+                    displayMsg.textContent = "You win! Paper > Rock!";
+                    if (downwards) {
+
+                        emojiSpan.textContent = "👊";
+                        downwards.parentNode.appendChild(emojiSpan);
+                        downwards.remove();
+                        downwards = null;
+                    }
+                    else {
+
+                        emojiSpan.textContent = "👊";
+                        spanUpdate.appendChild(emojiSpan);
+                    }
                     win += 1
-                    return 
+                    break 
                 case "paper":
-                    console.log("It's a draw!");
-                    return
+                    displayMsg.textContent = "It's a draw!";
+                    if (downwards) {
+
+                        emojiSpan.textContent = "✋";
+                        downwards.parentNode.appendChild(emojiSpan);
+                        downwards.remove();
+                        downwards = null;
+                    }
+                    else {
+
+                        emojiSpan.textContent = "✋";
+                        spanUpdate.appendChild(emojiSpan);
+                    }
+                    break
                 case "scissors":
-                    console.log("You lose! Paper < Scissors! :(");
+                    displayMsg.textContent = "You lose! Paper < Scissors! :(";
+                    if (downwards) {
+
+                        emojiSpan.textContent = "✌️";
+                        downwards.parentNode.appendChild(emojiSpan);
+                        downwards.remove();
+                        downwards = null;
+                    }
+                    else {
+
+                        emojiSpan.textContent = "✌️";
+                        spanUpdate.appendChild(emojiSpan);
+                    }
                     lose += 1
-                    return 
+                    break 
             }
         case "scissors":
             switch (computerSelection){
                 case "paper":
-                    console.log("You win! Scissors > Paper!");
+                    displayMsg.textContent = "You win! Scissors > Paper!";
+                    if (downwards) {
+
+                        emojiSpan.textContent = "✋";
+                        downwards.parentNode.appendChild(emojiSpan);
+                        downwards.remove();
+                        downwards = null;
+                    }
+                    else {
+
+                        emojiSpan.textContent = "✋";
+                        spanUpdate.appendChild(emojiSpan);
+                    }
                     win += 1
-                    return 
+                    break 
                 case "scissors":
-                    console.log("It's a draw!");
-                    return
+                    displayMsg.textContent = "It's a draw!";
+                    if (downwards) {
+
+                        emojiSpan.textContent = "✌️";
+                        downwards.parentNode.appendChild(emojiSpan);
+                        downwards.remove();
+                        downwards = null;
+                    }
+                    else {
+
+                        emojiSpan.textContent = "✌️";
+                        spanUpdate.appendChild(emojiSpan);
+                    }
+                    break
                 case "rock":
-                    console.log("You lose! Scissors < Rock! :(");
+                    displayMsg.textContent = "You lose! Scissors < Rock! :(";
+                    if (downwards) {
+                        emojiSpan.textContent = "👊";
+                        downwards.parentNode.appendChild(emojiSpan);
+                        downwards.remove();
+                        downwards = null;
+                    }
+                    else {
+                        emojiSpan.textContent = "👊";
+                        spanUpdate.appendChild(emojiSpan);
+                    }
                     lose += 1
-                    return
+                    break
             }
         }
 }
@@ -83,6 +195,12 @@ let win = 0;
 let lose = 0;
 
 
+rockChoice.addEventListener("click", () => {
+    playRound("rock", getComputerChoice())});
+paperChoice.addEventListener("click", () => {
+    playRound("paper", getComputerChoice())});
+scissorChoice.addEventListener("click", () => {
+    playRound("scissors", getComputerChoice())});
 
 
 

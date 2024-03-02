@@ -62,13 +62,20 @@ button{
 
 .battleArea{
     display: flex;
+    width: 30%;
     flex-direction: column;
     max-height: max-content;
-    justify-content: space-evenly;
-
+    justify-content: center;
+    align-items: center;
 }
 
 img{
     max-height: 250px;
     overflow: hidden;
 }
+
+
+p{
+    text-align: center;
+}
+
