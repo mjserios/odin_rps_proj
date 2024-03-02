@@ -4,9 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock, Paper, Scissors!</title>
-    <script src = "rps.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="rps.css">
+    <script src = "rps.js" defer></script>
 </head>
 <body>
-    
+    <div class="header">
+        ROCK PAPER SCISSORS
+    </div>
+    <div class="battlefield">
+        <div class="myScore">Your Score:
+            <div class="myCounter">0</div>
+        </div>
+        <div class="battleArea">
+            <p>Choose from the red buttons below</p>
+            <img src="down.gif">
+            <h1></h1>
+        </div>
+        <div class="enemyScore">Enemy Score:
+            <div class="enemyCounter">0</div>
+        </div>
+    </div>
+    <div class="selector">
+        <button class="rock">👊</button>
+        <button class="paper">✋</button>
+        <button class="scissors">✌️</button>
+    </div>
 </body>
 </html>
