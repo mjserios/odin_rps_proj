@@ -3,6 +3,10 @@ const paperChoice = document.querySelector(".paper");
 const scissorChoice = document.querySelector(".scissors");
 const displayMsg = document.querySelector(".battleArea p");
 let imageDisplay = document.querySelector(".battleArea img");
+const userScore = document.querySelector(".myCounter");
+const enemyScore = document.querySelector(".enemyCounter");
+let wins = 0;
+let loses = 0;
 
 function getComputerChoice (){
     rng = Math.floor(Math.random() * 3) + 1; // Generate random number from 1-3
@@ -21,13 +25,27 @@ function getComputerChoice (){
 
 function playRound (playerSelection, computerSelection){
     console.log("Rock, Paper, Scissors, Shoot!");
+    userScore.textContent = wins;
+    enemyScore.textContent = loses;
+    if (wins == 5){
+        alert("Congratulations you won the series!");
+        wins = 0;
+        loses = 0;
+        imageDisplay.src = "down.gif";
+    }
+    else if (loses == 5) {
+        alert("Get noob");
+        wins = 0;
+        loses = 0;
+        imageDisplay.src = "down.gif";
+    }
     switch (playerSelection){
         case "rock":
             switch (computerSelection){
                 case "scissors":
                     displayMsg.textContent = "You win! Rock > Scissors!";
                     imageDisplay.src = "scissor.png";
-                    win += 1;
+                    wins += 1;
                     return 
                 case "rock":
                     displayMsg.textContent = "It's a draw!";
@@ -36,7 +54,7 @@ function playRound (playerSelection, computerSelection){
                 case "paper":
                     displayMsg.textContent = "You lose! Rock < Paper! :(";
                     imageDisplay.src = "paper.png";
-                    lose += 1
+                    loses += 1;
                     return 
             }
         case "paper":
@@ -44,7 +62,7 @@ function playRound (playerSelection, computerSelection){
                 case "rock":
                     displayMsg.textContent = "You win! Paper > Rock!";
                     imageDisplay.src = "rock.png";
-                    win += 1
+                    wins += 1;
                     return 
                 case "paper":
                     displayMsg.textContent = "It's a draw!";
@@ -53,7 +71,7 @@ function playRound (playerSelection, computerSelection){
                 case "scissors":
                     displayMsg.textContent = "You lose! Paper < Scissors! :(";
                     imageDisplay.src = "scissor.png";
-                    lose += 1
+                    loses += 1;
                     return 
             }
         case "scissors":
@@ -61,7 +79,7 @@ function playRound (playerSelection, computerSelection){
                 case "paper":
                     displayMsg.textContent = "You win! Scissors > Paper!";
                     imageDisplay.src = "paper.png";
-                    win += 1
+                    wins += 1;
                     return 
                 case "scissors":
                     displayMsg.textContent = "It's a draw!";
@@ -70,42 +88,30 @@ function playRound (playerSelection, computerSelection){
                 case "rock":
                     displayMsg.textContent = "You lose! Scissors < Rock! :(";
                     imageDisplay.src = "rock.png";
-                    lose += 1
+                    loses += 1;
                     return
             }
         }
 }
 
-function playGame(){
-    for (let i = 0; i < 100; i++) {
-        const playerSelection = prompt("What is your choice?").toLowerCase();
-        let computerSelection = getComputerChoice();
-        playRound(playerSelection, computerSelection);
-        if (win == 5){
-            console.log("Congratulations you won the series!");
-            break
-        }
-        else if (lose == 5) {
-            console.log("Get noob");
-            break
-        }
+    rockChoice.addEventListener("click", () => {
+        playRound("rock", getComputerChoice())
+    })
+    paperChoice.addEventListener("click", () => {
+        playRound("paper", getComputerChoice())
+    })
+    scissorChoice.addEventListener("click", () => {
+        playRound("scissors", getComputerChoice())
+    })
+
+    if (wins == 5){
+        alert("Congratulations you won the series!");
+
     }
-}
+    else if (loses == 5) {
+        alert("Get noob");
+    }
 
-
-
-let win = 0;
-let lose = 0;
-
-rockChoice.addEventListener("click", () => {
-    playRound("rock", getComputerChoice())
-})
-paperChoice.addEventListener("click", () => {
-    playRound("paper", getComputerChoice())
-})
-scissorChoice.addEventListener("click", () => {
-    playRound("scissors", getComputerChoice())
-})
 
 
 
